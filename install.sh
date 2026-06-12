@@ -110,5 +110,5 @@ cat <<EOF
 下一步 — 在 Claude Desktop 的 third-party inference 里填:
   Gateway base URL : http://127.0.0.1:$LISTEN_PORT/api
   Gateway API key  : (你自己的公司 token)
-  auth scheme      : bearer
+  auth scheme      : x-api-key   (重要: 不要用 bearer)
 EOF
