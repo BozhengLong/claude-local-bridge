@@ -1,4 +1,4 @@
-# claude-gw-proxy
+# claude-local-bridge
 
 在本机起一个 **loopback 转发**,让 **Claude Desktop** 用上**公司内网提供的 Claude API 网关**。开机自启,常驻后台,通断网无感。仅 macOS。
 
@@ -21,7 +21,7 @@ Claude Desktop ──http──> 127.0.0.1:21434 ──(socat/caddy)──> 内�
 ## 安装(三步)
 
 ```bash
-git clone <this-repo> && cd claude-gw-proxy
+git clone <this-repo> && cd claude-local-bridge
 cp config.example.env config.env      # 改成你的网关 IP / 端口
 ./install.sh                          # 装依赖 + 配开机自启 + 启动
 ```
@@ -54,7 +54,7 @@ cp config.example.env config.env      # 改成你的网关 IP / 端口
 lsof -nP -iTCP:21434 -sTCP:LISTEN
 
 # 看日志
-tail -f /tmp/com.claude-gw-proxy.err
+tail -f /tmp/com.claude-local-bridge.err
 
 # 改了 config.env 后重新应用
 ./install.sh
@@ -67,6 +67,6 @@ tail -f /tmp/com.claude-gw-proxy.err
 
 | 现象 | 处理 |
 |------|------|
-| Test connection 报连接失败 | 确认在内网/VPN;`lsof` 看端口是否在监听;看 `/tmp/com.claude-gw-proxy.err` |
+| Test connection 报连接失败 | 确认在内网/VPN;`lsof` 看端口是否在监听;看 `/tmp/com.claude-local-bridge.err` |
 | 报 401 / 404 而网关本身正常 | 网关按 Host 头路由,改用 caddy 引擎重装 |
 | 端口被占 | 改 `config.env` 里 `LISTEN_PORT` 换个冷门端口,重跑 `./install.sh` |

@@ -7,7 +7,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG="$SCRIPT_DIR/config.env"
-LABEL="com.claude-gw-proxy"
+LABEL="com.claude-local-bridge"
 PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
 
 err()  { printf '\033[31m%s\033[0m\n' "$*" >&2; }

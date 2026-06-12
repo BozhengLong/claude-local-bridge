@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-LABEL="com.claude-gw-proxy"
+LABEL="com.claude-local-bridge"
 PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
 
 launchctl unload "$PLIST" 2>/dev/null || true
