@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# 在本机 127.0.0.1 上起一个转发,把 Claude Desktop 的请求转给公司内网网关。
+# 在本机 127.0.0.1 上起一个转发,把 Claude Desktop 的请求转给第三方 API 供应商的网关。
 # 通过 launchd 开机自启 + 崩溃自动拉起。仅 macOS。
 #
 set -euo pipefail
@@ -109,6 +109,6 @@ cat <<EOF
 
 下一步 — 在 Claude Desktop 的 third-party inference 里填:
   Gateway base URL : http://127.0.0.1:$LISTEN_PORT/api
-  Gateway API key  : (你自己的公司 token)
+  Gateway API key  : (你的第三方供应商 API key)
   auth scheme      : x-api-key   (重要: 不要用 bearer)
 EOF
