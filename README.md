@@ -25,7 +25,7 @@ Claude Desktop ──http──> 127.0.0.1:21434 ──(socat/caddy)──> 供�
 - macOS
 - [Homebrew](https://brew.sh)(`install.sh` 依赖它安装 socat / caddy)
 - 第三方供应商的 **base URL** 与 **API key**
-- 使用时网络可访问该供应商(如需 VPN,请先建立连接)
+- 使用时网络可访问该供应商
 
 ## 安装
 
@@ -70,7 +70,7 @@ curl --noproxy '*' -s -o /dev/null -w "HTTP %{http_code}\n" http://127.0.0.1:214
 ## 日常使用
 
 - 开机自动启动并持续监听,无需手动管理。
-- 网络可访问供应商(或已连接 VPN)时,正常使用。
+- 网络可访问供应商时,正常使用。
 - 无法连接供应商时,请求失败但进程不会退出;网络恢复后自动恢复。
 
 ## 本机代理与 localhost
@@ -104,7 +104,7 @@ tail -f /tmp/com.claude-local-bridge.err
 | 现象 | 处理 |
 |------|------|
 | `must use https (or http on loopback)` | base URL 使用了非 loopback 地址;确认填写的是 `http://127.0.0.1:<端口>/api` |
-| Test connection 连接失败 | 确认网络可访问供应商(或处于 VPN 内);用 `lsof` 检查端口监听状态;查看 `/tmp/com.claude-local-bridge.err` |
+| Test connection 连接失败 | 确认网络可访问供应商;用 `lsof` 检查端口监听状态;查看 `/tmp/com.claude-local-bridge.err` |
 | `401 Invalid API key format` | auth scheme 有误,应改为 **`x-api-key`**;或 API key 复制时带有空格 / 前缀,请重新粘贴 |
 | `not_found_error: model ...` (404) | 供应商不支持所选模型,请更换为其支持的模型 |
 | curl 测试本地端口结果异常 | 添加 `--noproxy '*'`(请求被本机代理拦截) |
